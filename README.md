@@ -1,7 +1,7 @@
 # Python-Medai-Player
 This is a Simple Python Media Player using vlc python binding LibraryFor more details You can Find it here Home page https://wiki.videolan.org/PythonBinding. although it is a modified version from the vlc lib example.  
 
-
+![alt text](https://github.com/JithuPG/Python-Medai-Player/blob/master/screenshot/Medai%20Player.png)
 
 in order to run This application Requirements  
 
