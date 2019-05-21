@@ -8,6 +8,10 @@ you can install via
 pip install python-vlc  
    
  The main Features of this media player is  
-    Supports almost all audio formats 
-    Seeking Functionality 
-    adjust volume
+>Supports almost all audio formats 
+
+
+>Seeking Functionality
+
+
+>adjust volume
