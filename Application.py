@@ -49,7 +49,7 @@ class Application(QtWidgets.QMainWindow):
             self.VideoFrame = QtWidgets.QMacCocoaViewContainer(0)
         else:
             self.VideoFrame = QtWidgets.QFrame()
-            print("else is set")
+            
 
         #just for QFrame to customize [setting the color ]
         self.Pallet=self.VideoFrame.palette()
@@ -248,7 +248,7 @@ class Application(QtWidgets.QMainWindow):
 
     def timerEvent(self):
         self.time=self.time.addSecs(1)
-        print(self.time.toString("mm:ss"))
+        #print(self.time.toString("mm:ss"))
 
 
 
