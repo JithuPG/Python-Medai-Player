@@ -11,6 +11,7 @@ from PyQt5 import QtCore,QtWidgets,QtGui
 
 
 import vlc
+import time as STimmer
 
 class Application(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -31,6 +32,15 @@ class Application(QtWidgets.QMainWindow):
         self.Is_pasue=False
         self.Is_Vframe_Hidden=False
         self.IS_Audio_File=False
+
+        
+        """
+        # Timmer vars
+        using Timmer to calcualting the elapse time while playing the song !
+        """
+        self._second=0
+        self._minutes=0
+        self._hour=0
 
 
     def Init_GUI(self):
@@ -77,7 +87,9 @@ class Application(QtWidgets.QMainWindow):
         self.Stopbutton=QtWidgets.QPushButton("Stop")
         self.Hbox.addWidget(self.Stopbutton)
         self.Stopbutton.clicked.connect(self.Stop)
-
+        self.Hbox.addStretch(1)
+        self.Time_duration=QtWidgets.QLabel("0:0:0")
+        self.Hbox.addWidget(self.Time_duration)
         #Volume Slider
         self.Hbox.addStretch(1)
         self.VolumeSlider=QtWidgets.QSlider(QtCore.Qt.Horizontal,self)
@@ -146,6 +158,8 @@ class Application(QtWidgets.QMainWindow):
         """
         self.MPlayer.stop()
         self.Playbutton.setText("Play")
+        self.timer.stop()
+        self.timer.setInterval(100)
         if self.Is_Vframe_Hidden:
             self.VideoFrame.show()
             self.Is_Vframe_Hidden=False
@@ -247,11 +261,17 @@ class Application(QtWidgets.QMainWindow):
         #print(self.timer.)
 
     def timerEvent(self):
-        self.time=self.time.addSecs(1)
-        #print(self.time.toString("mm:ss"))
-
-
-
+        #self.time=self.time.addSecs(1)
+        media_pos = int(self.MPlayer.get_position() * 1000)
+        STimmer.sleep(1)
+        print(self._hour,":",self._minutes,":",self._second)
+        self._second+=1
+        if (self._second==60):
+            self._second=0
+            self._minutes+=1
+        if (self._minutes==60):
+            self._minutes=0
+            self._hour+=1
 
 
 if __name__ == "__main__":
